@@ -26,6 +26,10 @@
             background: white;
             margin: 1em;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+        }
+        section {
+            margin: 1em 0;
         }
         footer {
             background-color: #333;
@@ -33,38 +37,80 @@
             padding: 1em;
             text-align: center;
             width: 100%;
-            position: absolute;
-            bottom: 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin: 5px 0;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .dropdown {
+            margin: 1em 0;
+        }
+        .dropdown select {
+            padding: 10px;
+            font-size: 16px;
         }
     </style>
+    <script>
+        function showAlert(buttonName) {
+            alert('Button clicked: ' + buttonName);
+        }
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EP8ZKLH9B5"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-EP8ZKLH9B5');
-</script>
+        function handleDropdownChange() {
+            const dropdown = document.getElementById('sectionDropdown');
+            const sectionId = dropdown.value;
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
 </head>
 <body>
     <header>
         <h1>Welcome to My Website</h1>
     </header>
     <main>
-        <h2>About Me</h2>
-        <p>Hi! I'm sso, and this is a brief introduction about myself. I am passionate about web development and love creating beautiful, user-friendly websites.</p>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hi! I'm sso, and this is a brief introduction about myself. I am passionate about web development and love creating beautiful, user-friendly websites.</p>
+            <button onclick="showAlert('Learn More About Me')">Learn More About Me</button>
+        </section>
         
-        <h2>Projects</h2>
-        <ul>
-            <li>Project 1: A description of the first project.</li>
-            <li>Project 2: A description of the second project.</li>
-            <li>Project 3: A description of the third project.</li>
-        </ul>
+        <section id="projects">
+            <h2>Projects</h2>
+            <ul>
+                <li>Project 1: A description of the first project.</li>
+                <li>Project 2: A description of the second project.</li>
+                <li>Project 3: A description of the third project.</li>
+            </ul>
+            <button onclick="showAlert('View All Projects')">View All Projects</button>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>If you'd like to get in touch, please email me at <a href="mailto:test@example.com">test@example.com</a>.</p>
+            <button onclick="showAlert('Contact Me')">Contact Me</button>
+        </section>
         
-        <h2>Contact</h2>
-        <p>If you'd like to get in touch, please email me at <a href="mailto:test@example.com">test@example.com</a>.</p>
+        <section id="extra">
+            <h2>More Information</h2>
+            <p>This section provides additional information about the website and its content.</p>
+            <button onclick="showAlert('Read More Information')">Read More Information</button>
+        </section>
+
+        <div class="dropdown">
+            <label for="sectionDropdown">Navigate to section: </label>
+            <select id="sectionDropdown" onchange="handleDropdownChange()">
+                <option value="about">About Me</option>
+                <option value="projects">Projects</option>
+                <option value="contact">Contact</option>
+                <option value="extra">More Information</option>
+            </select>
+        </div>
     </main>
     <footer>
         &copy; 2024 sso. All rights reserved.
