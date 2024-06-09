@@ -62,6 +62,10 @@
             alert('Button clicked: ' + buttonName);
         }
 
+         function navigateToURL(url) {
+            window.location.href = url;
+        }
+        
         function handleDropdownChange() {
             const dropdown = document.getElementById('sectionDropdown');
             const sectionId = dropdown.value;
